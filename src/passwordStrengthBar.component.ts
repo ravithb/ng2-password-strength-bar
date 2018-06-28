@@ -143,9 +143,6 @@ export class PasswordStrengthBarComponent implements OnChanges {
     const password = changes['passwordToCheck'].currentValue;
     this.checkBarColors();
     this.setBarColors(5, this.baseColor);
-    console.log(this.passwordToCheck);
-    
-    console.log(typeof this.passwordToCheck);
     
     if (password) {
       const c = this.getStrengthIndexAndColor(password);

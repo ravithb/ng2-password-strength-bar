@@ -93,9 +93,6 @@ export class PasswordMatchIndicatorComponent implements OnChanges {
   }
 
   private static checkMatch(p: string,cp: string) {
-    console.log(p);
-    console.log(cp);
-    console.log(p==cp);
     if(!p || p==""){
       return 0;
     }
