@@ -1,7 +1,7 @@
 import {Component, OnChanges, Input, SimpleChange} from '@angular/core';
 
 @Component({
-  selector: 'ng2-password-strength-bar',
+  selector: 'rb-password-strength-bar',
   styles: [`
     .strengthBar {
       display: inline;
@@ -74,7 +74,7 @@ export class PasswordStrengthBarComponent implements OnChanges {
     }
 
     this.strengths = this.strengthLabels && this.strengthLabels.length === 5 ? this.strengthLabels.slice() : null;
-    this.setStrengthLabel(0);
+    this.setStrengthLabel(0,true);
 
     if (!/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(this.baseColor)) {
       this.baseColor = this.defaultBaseColor;
@@ -143,10 +143,16 @@ export class PasswordStrengthBarComponent implements OnChanges {
     const password = changes['passwordToCheck'].currentValue;
     this.checkBarColors();
     this.setBarColors(5, this.baseColor);
+    console.log(this.passwordToCheck);
+    
+    console.log(typeof this.passwordToCheck);
+    
     if (password) {
       const c = this.getStrengthIndexAndColor(password);
-      this.setStrengthLabel(c.idx - 1);
+      this.setStrengthLabel(c.idx - 1,(password==""));
       this.setBarColors(c.idx, c.col);
+    }else{
+      this.setStrengthLabel(0,true);
     }
   }
 
@@ -155,7 +161,11 @@ export class PasswordStrengthBarComponent implements OnChanges {
       this['bar' + _n] = col;
     }
   }
-  private setStrengthLabel(index: number) {
+  private setStrengthLabel(index: number,isEmpty:boolean) {
+    if (isEmpty){
+      this.strengthLabel = "";
+      return;
+    }
     if (this.strengths) {
       this.strengthLabel = this.strengths[index];
     }

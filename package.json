@@ -1,6 +1,6 @@
 {
-  "name": "ng2-password-strength-bar",
-  "version": "1.2.1",
+  "name": "rb-password-strength-bar",
+  "version": "1.2.7",
   "description": "Angular 2 Password Strength Bar",
   "scripts": {
     "start": "npm run build && concurrently \"tsc -w\" \"lite-server\" ",
@@ -22,7 +22,7 @@
     "type": "git",
     "url": "git+https://github.com/rnadler/ng2-password-strength-bar.git"
   },
-  "author": "Robert Nadler",
+  "author": "Robert Nadler, Ravith Botejue",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/rnadler/ng2-password-strength-bar/issues"
